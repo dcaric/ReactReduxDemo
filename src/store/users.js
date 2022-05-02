@@ -9,9 +9,7 @@ export const fetchUsers = createAsyncThunk(
         // thunkAPI.dispatch(testAsyncDispatch())
         try{
             const res = await axios.get(`https://jsonplaceholder.typicode.com/users`)
-            //return res.data
-
-            return fulfillWithValue('something else')
+            return res.data
         } catch(err){
             return rejectWithValue('Oop, try again later')
         }
