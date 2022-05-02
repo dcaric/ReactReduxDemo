@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { addMovie } from './store/movies'
-import { setType } from './store/users'
+import { setType, fetchUsers } from './store/users'
 
 
 const App = () => {
@@ -25,6 +25,10 @@ const App = () => {
       <button onClick={()=>dispatch(setType('Admin'))}>
         Set type
       </button>
+      <hr/>
+
+      <button onClick={()=> dispatch(fetchUsers())}>Get users</button>
+
     </>
   )
 }
