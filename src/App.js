@@ -10,16 +10,22 @@ const App = () => {
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch(); // for dispatching redux actions
 
+
+  // special case where we are using reducer fetchUsers outside  (before) of return
+
   useEffect(()=>{
     dispatch(fetchUsers())
-    .unwrap()
+    .unwrap() // gives the ability to use .then and .catch
     .then((response)=>{
-      console.log(response)
+      // successfull case but also case when we get error
+      // instead of putting here a lot of if error we can use .unwrap()
+      console.log(response) // this is whole repoonse from <fetchUsers = createAsyncThunk>
     })
     .catch(error => {
+      // network error case and handling error
       console.log(error)
     })
-  },[])
+  },[]) // [] -> only on component reload
 
 
   return (
@@ -47,7 +53,7 @@ const App = () => {
         <li key={user.id}>{user.name}</li>) 
       : null}</ul>
 
-      {/* <button onClick={() => dispatch(fetchUsers())}>Get users</button> */}
+      <button onClick={() => dispatch(fetchUsers())}>Get users</button>
     </>
   );
 };
