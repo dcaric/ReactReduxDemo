@@ -10,12 +10,16 @@ export const moviesSlice = createSlice({
         ]
     },
     reducers:{
+        // here is the list of actions for this reducer "movie"
+        // action has access to payoad
         addMovie:(state,action)=>{
-            // const newMovie = {id:3,title:'Batman'};
-            state.list = [...state.list,action.payload]
+            // const newMovie = {id:3,title:'Batman'}
+            // state.list = [...state.list, newMovie]
+
+            state.list = [...state.list, action.payload]
         }
     }
 });
 
-export const { addMovie } = moviesSlice.actions;
+export const { addMovie } = moviesSlice.actions; // export action (addMovie)
 export default moviesSlice.reducer;
